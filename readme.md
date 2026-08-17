@@ -170,6 +170,7 @@ AiPersonalAssistant
 ├─ .env.example              # credential template — copy to .env
 ├─ .env                      # your actual secrets (git-ignored)
 ├─ .gitignore
+├─ LICENSE                   # MIT
 ├─ app.py                    # FastAPI server: serves the web UI + POST /api/chat
 ├─ static
 │  ├─ index.html               # chat page markup
@@ -184,7 +185,7 @@ AiPersonalAssistant
 │  ├─ personal_agents.py       # Orchestrator: creates the 4 agents + SelectorGroupChat, routes requests
 │  ├─ configurations.py        # Loads .env into a single Config object
 │  ├─ prompts.py                # System prompts for all 4 agents
-│  ├─ email_tools.py            # Gmail tools (LangChain GmailToolkit, wrapped for AutoGen)
+│  ├─ email_tools.py            # Gmail tools: LangChain GmailToolkit (draft/send) + custom search_emails/get_email (clean formatting, see Agent Capabilities below)
 │  ├─ calendar_tools.py         # Google Calendar tools (list/create/insert/delete events, Meet links)
 │  ├─ weather_tools.py          # Open-Meteo + Nominatim tools (current/forecast/rain probability)
 │  ├─ search_tools.py           # Tavily web_search / research_search tools
