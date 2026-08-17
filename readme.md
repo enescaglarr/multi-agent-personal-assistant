@@ -9,19 +9,23 @@ A multi-agent productivity assistant that consolidates Gmail, Google Calendar, w
 For anyone who just wants the commands — see the Detailed Setup Guide below for explanations and troubleshooting.
 
 ```bash
-# 1. Set up the environment
+# 1. Clone and enter the project
+git clone https://github.com/enescaglarr/Multi-Agent-Personal-Assistant.git
+cd Multi-Agent-Personal-Assistant
+
+# 2. Set up the environment
 python3.12 -m venv vn_autogen
 source vn_autogen/bin/activate      # Windows: vn_autogen\Scripts\activate
 pip install -r requirements.txt
 
-# 2. Configure credentials
+# 3. Configure credentials
 cp .env.example .env
 # open .env and fill in GROQ_API_KEY + TAVILY_SEARCH_KEY (see guides below)
 
-# 3. Add Google OAuth credentials
+# 4. Add Google OAuth credentials
 # download your OAuth client as credentials.json into the project root (see guide below)
 
-# 4. Run the server
+# 5. Run the server
 python app.py
 # or: uvicorn app:app --host 0.0.0.0 --port 8000
 ```
@@ -38,7 +42,14 @@ Then open **http://localhost:8000** in a browser and start chatting. On first re
 
 A Google Cloud project (Gmail + Calendar APIs), a Groq API key, and a Tavily API key are also required, but those are credentials, not local installs — see the dedicated guides below.
 
-### 2. Create the virtual environment
+### 2. Clone the repository
+
+```bash
+git clone https://github.com/enescaglarr/Multi-Agent-Personal-Assistant.git
+cd Multi-Agent-Personal-Assistant
+```
+
+### 3. Create the virtual environment
 
 ```bash
 python3.12 -m venv vn_autogen
@@ -46,7 +57,7 @@ source vn_autogen/bin/activate      # Windows: vn_autogen\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3. Configure credentials via `.env`
+### 4. Configure credentials via `.env`
 
 This project reads all credentials from environment variables — nothing is hardcoded in the source.
 
@@ -66,7 +77,7 @@ Then fill in `.env`:
 
 `.env` is gitignored and loaded automatically by `source/configurations.py` via `python-dotenv` — never commit it.
 
-### 4. Google Workspace credentials (Gmail + Calendar)
+### 5. Google Workspace credentials (Gmail + Calendar)
 
 1. Create/select a project in [Google Cloud Console](https://console.cloud.google.com/), enable the **Gmail API** and **Google Calendar API**.
 2. Under **APIs & Services → OAuth consent screen**, add your own Google account under **Audience → Test users**. Without this, sign-in fails with `Error 403: access_denied` ("has not completed the Google verification process") — the app stays in Testing mode (fine for personal use), but Google only allows explicitly-added test users to authorize it.
@@ -74,7 +85,7 @@ Then fill in `.env`:
 4. Download it and save it as `credentials.json` in the project root — this matches `GOOGLE_CREDENTIALS_FILE` in `.env`.
 5. On first run, a browser window opens for consent; you may see a "Google hasn't verified this app" warning first (expected for Testing-mode apps requesting Gmail/Calendar scopes) — click **Advanced → Go to \<app name\> (unsafe)** to proceed, since it's your own app. `token.json` is created automatically afterwards (`source/google_utils.py` handles refresh transparently after that).
 
-### 5. Run it
+### 6. Run it
 
 ```bash
 python app.py
