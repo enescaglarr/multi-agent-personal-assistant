@@ -228,5 +228,3 @@ All operations log to both the console and `logs/personal_assistant.log`, with t
 6. OAuth2 in practice — a full Google Workspace auth flow (initial consent, token persistence, silent refresh) shared across two different services (Gmail, Calendar).
 7. Provider-agnostic LLM integration — every agent and tool is built against AutoGen's own abstractions rather than a specific provider's SDK, so `create_model_client()` in `source/personal_agents.py` is the only place that knows it's talking to Groq specifically.
 8. A thin, framework-free web front-end — `app.py` + `static/` is plain FastAPI and vanilla HTML/CSS/JS with no build step, calling `PersonalAssistantOrchestrator.process_request(text)` and rendering whatever string comes back.
-# Multi-Agent-Personal-Assistant
-# Multi-Agent-Personal-Assistant
