@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+*.egg
+build/
+dist/
+
+# Virtual environments
+venv/
+vn_autogen/
+.venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Google OAuth credentials & tokens
+credentials.json
+gmail-creds.json
+token.json
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
