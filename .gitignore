@@ -33,3 +33,6 @@ logs/
 # IDE
 .vscode/
 .idea/
+
+# Personal interview-prep material (decks, cheatsheets) -- not project documentation
+Multi-Agent-Assistant-Decks/
