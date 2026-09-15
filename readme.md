@@ -1,5 +1,7 @@
 # Multi Agent Personal Assistant
 
+**Live demo:** https://enescaglar.com/#/demo/multi-agent-assistant
+
 A multi-agent productivity assistant that consolidates Gmail, Google Calendar, weather, and web search behind one conversational interface. Built with [AutoGen AgentChat](https://microsoft.github.io/autogen/) (`SelectorGroupChat`) to orchestrate four specialized agents — instead of one monolithic assistant trying to do everything, each service gets its own agent with its own tools and system prompt, and a selector LLM picks the single agent best suited to handle each request. Exposed via a FastAPI server with a small built-in web chat UI, so it's usable straight from a browser with no external platform to configure. All credentials live in a git-ignored `.env` file — nothing is hardcoded in the source.
 
 **Stack:** Python 3.12 — [AutoGen AgentChat / Core / Ext](https://microsoft.github.io/autogen/) for agent orchestration, [Groq](https://groq.com/) (`openai/gpt-oss-20b` by default) via `autogen_ext`'s `OpenAIChatCompletionClient` pointed at Groq's OpenAI-compatible API, [FastAPI](https://fastapi.tiangolo.com/) serving a plain HTML/CSS/vanilla-JS chat page (no frontend framework or build step), Google Gmail/Calendar APIs (OAuth2, via `google-api-python-client` and LangChain's `GmailToolkit` for email tools), [Tavily](https://tavily.com/) for web search, and [Open-Meteo](https://open-meteo.com/) + [Nominatim](https://nominatim.org/) (OpenStreetMap) for weather — both free, no API key required.
